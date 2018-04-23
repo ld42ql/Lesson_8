@@ -24,7 +24,7 @@
             <Button x:Name="InitButton" Margin="5" FontSize="16" Style="{StaticResource FlatStyle}" PreviewMouseLeftButtonDown="InitializeButton">Инициализация</Button>
             <Button x:Name="RunSortingButton" Margin="5" FontSize="16" IsEnabled="False" Style="{StaticResource FlatStyle}" PreviewMouseLeftButtonDown="RunSorting">Сортировать</Button>
         </StackPanel>
-        <Canvas Grid.Row="3" Margin="15" x:Name="DrawingCanvas"/>
+        <Canvas Grid.Row="3" Background="WhiteSmoke" x:Name="DrawingCanvas"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <RadioButton x:Name="FirstRadioButton" Margin="10,5" VerticalAlignment="Center" IsChecked="True" Foreground="{StaticResource AccentColorBrush}" FontSize="16">Пузырьковая сорт</RadioButton>
             <RadioButton x:Name="SecondRadioButton" Margin="10,5" VerticalAlignment="Center" Foreground="{StaticResource AccentColorBrush}" FontSize="16">Сорт вставками</RadioButton>

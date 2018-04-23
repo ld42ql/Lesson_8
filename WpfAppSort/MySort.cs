@@ -3,22 +3,35 @@ using System.Windows.Shapes;
 
 namespace WpfAppSort
 {
+    /// <summary>
+    /// Класс с сортировками
+    /// </summary>
     class MySort
     {
         DrawArray draw;
 
-       public Rectangle[] rectangles;
+        /// <summary>
+        /// Массив с визуализацией массива в виде прямоугольников
+        /// </summary>
+        public Rectangle[] Rectangles { get => draw.InitializeRectangles(); }
 
-       public int[] array;
+        private int[] array;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="count">Количество в массиве</param>
         public MySort(int count)
         {
             this.array = GenericArray.UniqueVales(count);
             draw = new DrawArray(400, array);
-            rectangles = draw.InitializeRectangles();
         }
 
-        public int[] BulbSort()
+        /// <summary>
+        /// Пузырьковая сортировка
+        /// </summary>
+        /// <returns></returns>
+        public void BulbSort()
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -33,10 +46,13 @@ namespace WpfAppSort
                     draw.DefauldColor(i, j);
                 }
             }
-            return array;
         }
 
-        public int[] InsertionSort()
+        /// <summary>
+        /// Сортировка вставками
+        /// </summary>
+        /// <returns></returns>
+        public void InsertionSort()
         {
             int[] result = new int[array.Length];
             for (int i = 0; i < array.Length; i++)
@@ -49,14 +65,18 @@ namespace WpfAppSort
                     draw.SwapRectangles(j, j - 1);
                    
                     draw.DefauldColor(i, j - 1);
+                    draw.DefauldColor(j);
                     j--;
                 }
                 result[j] = array[i];
             }
-            return result;
         }
 
-        public int[] ShakerSort()
+        /// <summary>
+        /// Сортировка смешиванием
+        /// </summary>
+        /// <returns></returns>
+        public void ShakerSort()
         {
             int beg, end;
             int count = 0;
@@ -82,10 +102,13 @@ namespace WpfAppSort
                 }
                 while (beg <= end);
             }
-            return array;
         }
 
-        public int[] ShellsSort()
+        /// <summary>
+        /// Сортировка Шелла
+        /// </summary>
+        /// <returns></returns>
+        public void ShellsSort()
         {
             int n = array.Length;
             int j, temp;
@@ -99,28 +122,22 @@ namespace WpfAppSort
                     for (j = i; j >= k; j -= k)
                     {
                         draw.SelectColor(j, j - k);
-                        Pause(array.Length / 4);
-
                         if (temp < array[j - k])
                         {
                             array[j] = array[j - k];
                             draw.SwapRectangles(j, j - k);
                             draw.DefauldColor(j, j - k);
-                            
                         }
                         else
                         {
                             draw.DefauldColor(j, j - k);
-                           
                             break;
                         }
                     }
                     array[j] = temp;
-                    
                 }
                 k /= 2;
             }
-            return array;
         }
 
         /// <summary>
@@ -135,13 +152,7 @@ namespace WpfAppSort
             temp = myint[i];
             myint[i] = myint[j];
             myint[j] = temp;
-           
             draw.SwapRectangles(i, j);
         }
-        private void Pause(int value)
-        {
-            Thread.Sleep(1000 / value);
-        }
-
     }
 }
