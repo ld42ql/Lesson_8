@@ -4,10 +4,6 @@
              xmlns:local="clr-namespace:WpfAppSort"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/FlatStyle.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+       
     </Application.Resources>
 </Application>
